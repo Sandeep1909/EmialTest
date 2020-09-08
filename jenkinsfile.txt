@@ -1,0 +1,13 @@
+node {
+	stage ('SCM checkout'){
+		git "https://github.com/Sandeep1909/EmialTest"
+		}
+	stage ('Build'){
+    	dir("Test1") {
+	   sh "mvn clean install"
+       }
+       	dir("Test1/target") {
+	   sh "java -jar com.test-1.0-SNAPSHOT.jar"
+       }
+		}
+}
